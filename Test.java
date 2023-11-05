@@ -1,0 +1,79 @@
+package main;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Test {
+
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        ArrayList<Student> students = new ArrayList<>();
+
+        System.out.println("===========================================================");
+        System.out.println("=                           MENU                          =");
+        System.out.println("=      1.Nhập thông tin Sinh Viên mới.                    =");
+        System.out.println("=      2.Xem Danh Sách Sinh Viên.                         =");
+        System.out.println("=      3.Tìm kiếm Sinh Viên.                              =");
+        System.out.println("=      4.Thoát                                            =");
+        System.out.println("===========================================================");
+        System.out.println("Chọn MENU: ");
+        int choice = sc.nextInt();
+        sc.nextLine();
+
+        switch (choice) {
+            case 1:
+                System.out.println("Nhập Tên Sinh Viên: ");
+                String FullName = sc.nextLine();
+                System.out.println("Nhập ID Sinh Viên: ");
+                int ID = sc.nextInt();
+                sc.nextLine();
+                System.out.println("Nhập Ngày Sinh của Sinh Viên: ");
+                String DayBirth = sc.nextLine();
+                System.out.println("Nhập Địa Chỉ của Sinh Viên: ");
+                String Native = sc.nextLine();
+                System.out.println("Nhập Lớp của Sinh Viên: ");
+                String Class = sc.nextLine();
+                System.out.println("Nhập SĐT của Sinh Viên: ");
+                int Mobile = sc.nextInt();
+                sc.nextLine();
+                Student newstudent = new Student(FullName, ID, DayBirth, Native, Class, Mobile);
+                students.add(newstudent);
+                break;
+
+            case 2:
+                System.out.println("List of Students:");
+                for (Student student : students) {
+                    student.Display();
+                }
+                break;
+
+            case 3:
+                System.out.println("Nhập Lớp để tìm kiếm: ");
+                String Class1 = sc.nextLine();
+                System.out.println("Sinh Viên ở trong Lớp: " + Class1);
+
+                for (Student student : students) {
+                    if (student.getaClass().equals(Class1)) {
+                        student.Display();
+                    }
+                }
+                break;
+
+            case 4:
+                System.out.println("Bạn có muốn thoát! (c/k) ");
+                char ck = sc.next().charAt(0);
+                if(ck == 'c'){
+                    System.out.println("GOODBYE!!!!!!!!!!!!");
+                    System.exit(0);
+                }else if(ck == 'k') {
+
+                }
+                sc.close();
+
+            default:
+                System.out.println("Chọn không hợp lệ!");
+
+        }}
+
+
+    }
